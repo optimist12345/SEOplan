@@ -4,7 +4,7 @@ import openai
 
 # Page config
 st.set_page_config(page_title="AI SEO Specialist", layout="centered")
-st.title("🚀 AI SEO Specialist")
+st.title("AI SEO Specialist")
 st.write("Boost your SEO with AI-driven keyword research and content generation!")
 
 # Sidebar menu
@@ -60,6 +60,6 @@ elif menu == "Content Generator":
             st.success(response["choices"][0]["message"]["content"].strip())
 
         except Exception as e:
-            st.error(f"❌ Failed to generate content. Check your API key or try again.\n\n**Error:** {e}")
+            st.error(f"Failed to generate content. Check your API key or try again.\n\n**Error:** {e}")
 
 
