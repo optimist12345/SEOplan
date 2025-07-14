@@ -6,9 +6,9 @@ import os
 import time
 from typing import Optional, Dict, Any
 
-
-#  CONFIGURATION
-
+# ========================
+# 🛠️ CONFIGURATION
+# ========================
 @st.cache_resource
 def configure_openai():
     """Initialize OpenAI client with multiple fallback options"""
@@ -42,7 +42,7 @@ def get_api_key_input():
     return None
 
 # ========================
-#  PAGE SETUP
+# 🖥️ PAGE SETUP
 # ========================
 st.set_page_config(
     page_title="AI SEO Specialist",
@@ -164,17 +164,16 @@ def generate_meta_description(topic: str, tone: str, target_length: int = 155) -
     try:
         with st.spinner("✨ Crafting perfect meta description..."):
             prompt = f"""
-            Create an SEO-optimized meta description for the topic: "{topic}"  Requirements:
+            Create an SEO-optimized meta description for the topic: "{topic}"Requirements:
             - Tone: {tone.lower()}
             - Length: Under {target_length} characters
             - Include relevant keywords naturally
             - Add a compelling call-to-action
             - Make it click-worthy and informative
-            Return only the meta description text. 
-            '''
-           
             
-          
+            Return only the meta description text.'''
+            
+            
             response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[
@@ -186,7 +185,7 @@ def generate_meta_description(topic: str, tone: str, target_length: int = 155) -
                         "role": "user",
                         "content": prompt
                     }
-             ],
+                ],
                 max_tokens=100,
                 temperature=0.7
             )
@@ -264,9 +263,9 @@ def calculate_seo_score(length: int, contains_topic: bool, has_action_word: bool
     
     return min(score, 100)
 
-
-# MAIN INTERFACE
-
+# ========================
+# 📊 MAIN INTERFACE
+# ========================
 # Sidebar navigation
 with st.sidebar:
     st.markdown("### 🧭 Navigation")
@@ -460,7 +459,7 @@ elif menu == "📊 SEO Analytics":
         """)
     
     # Mock analytics data
-    st.markdown("###  Sample Analytics")
+    st.markdown("### 📈 Sample Analytics")
     
     import numpy as np
     
